@@ -12,7 +12,12 @@ screen = pygame.display.set_mode((640, 480), 0, 32)
 background = pygame.image.load(background_image_filename).convert()
 sprite = pygame.image.load(sprite_image_filename)
 
+# Clock对象
+clock = pygame.time.Clock()
+
 x = 0
+# 速度（像素/秒）
+speed = 250
 
 while True:
 
@@ -23,14 +28,13 @@ while True:
     screen.blit(background, (0,0))
     screen.blit(sprite, (x,100))
 
-    x+=0.1
+    time_passed = clock.tick()
+    time_passed_second = time_passed / 1000.0
+
+    distance_moved = time_passed_second * speed
+    x+=distance_moved
 
     if x>640.:
-        x = 0.
-
-    clock = pygame.time.Clock()
-    time_passed = clock.tick()
-    time_passed = clock.tick(30)
-    #第二行的意识是返回一个上次调用的时间（以毫秒计）；第三行非常有用，在每一个循环中加上它
+        x -= 640.
 
     pygame.display.update()
