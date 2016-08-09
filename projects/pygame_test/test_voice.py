@@ -50,7 +50,6 @@ class Ball():
             self.position.x = screen_width - w / 2.0 - 1.0
             bounce = True
 
-
         # 根据时间计算现在的位置，物理好得立刻发现这其实不标准，
         # 正规的应该是s = 1/2 *g*t*t,不过这样省事省时一点，咱只是模拟
         self.position += self.speed * time_passed
